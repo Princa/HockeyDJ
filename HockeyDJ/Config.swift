@@ -69,7 +69,7 @@ struct Config {
     static let isDebugMode = true
     
     /// Use sample data for testing
-    static let useSampleData = true
+    static let useSampleData = false
     #else
     static let isDebugMode = false
     static let useSampleData = false

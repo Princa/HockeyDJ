@@ -12,7 +12,8 @@ enum YouTubeMusicError: LocalizedError {
     case networkError(Error)
     case parseError
     case apiKeyMissing
-    
+    case invalidResponse
+
     var errorDescription: String? {
         switch self {
         case .invalidURL:
@@ -23,147 +24,287 @@ enum YouTubeMusicError: LocalizedError {
             return "Failed to parse YouTube data. Please try again."
         case .apiKeyMissing:
             return "YouTube API key is missing. Please configure the app settings."
+        case .invalidResponse:
+            return "Received an invalid response from YouTube API."
         }
     }
 }
 
 class YouTubeMusicService: ObservableObject {
     @Published var isLoading: Bool = false
-    
-    // Note: In a production app, you would need:
-    // 1. YouTube Data API key
-    // 2. Proper OAuth authentication for YouTube Music
-    // 3. Integration with YouTube Music API or a third-party library
-    
+
     func importPlaylist(url: String) async throws -> [Song] {
-        guard let youtubeURL = URL(string: url) else {
+        guard URL(string: url) != nil else {
             throw YouTubeMusicError.invalidURL
         }
-        
-        // Extract playlist ID or video ID from URL
+
+        if Config.useSampleData {
+            let playlistId = extractPlaylistId(from: url)
+            let videoId = extractVideoId(from: url)
+
+            if let playlistId {
+                return createSampleSongs(count: 5, prefix: "Playlist \(playlistId.prefix(6)) Song")
+            } else if let videoId {
+                return createSampleSongs(count: 1, prefix: "Video", videoId: videoId)
+            }
+
+            throw YouTubeMusicError.invalidURL
+        }
+
+        guard Config.isYouTubeMusicEnabled else {
+            throw YouTubeMusicError.apiKeyMissing
+        }
+
         let playlistId = extractPlaylistId(from: url)
         let videoId = extractVideoId(from: url)
-        
-        if let playlistId = playlistId {
+
+        if let playlistId {
             return try await fetchPlaylistSongs(playlistId: playlistId)
-        } else if let videoId = videoId {
+        } else if let videoId {
             return try await fetchSingleVideo(videoId: videoId)
-        } else {
-            throw YouTubeMusicError.invalidURL
         }
+
+        throw YouTubeMusicError.invalidURL
     }
-    
+
     private func extractPlaylistId(from url: String) -> String? {
-        // Extract playlist ID from URL patterns like:
-        // https://music.youtube.com/playlist?list=PLxxxxxx
-        // https://www.youtube.com/playlist?list=PLxxxxxx
-        
         guard let urlComponents = URLComponents(string: url),
               let queryItems = urlComponents.queryItems,
               let listParam = queryItems.first(where: { $0.name == "list" }),
-              let playlistId = listParam.value else {
+              let playlistId = listParam.value,
+              !playlistId.isEmpty else {
             return nil
         }
-        
+
         return playlistId
     }
-    
+
     private func extractVideoId(from url: String) -> String? {
-        // Extract video ID from URL patterns like:
-        // https://www.youtube.com/watch?v=xxxxxx
-        // https://youtu.be/xxxxxx
-        // https://music.youtube.com/watch?v=xxxxxx
-        
         if url.contains("youtu.be/") {
-            if let videoId = url.components(separatedBy: "youtu.be/").last?.components(separatedBy: "?").first {
-                return videoId
-            }
-        } else if url.contains("youtube.com") {
-            guard let urlComponents = URLComponents(string: url),
-                  let queryItems = urlComponents.queryItems,
-                  let vParam = queryItems.first(where: { $0.name == "v" }),
-                  let videoId = vParam.value else {
-                return nil
-            }
-            return videoId
+            return url
+                .components(separatedBy: "youtu.be/")
+                .last?
+                .components(separatedBy: "?")
+                .first
         }
-        
-        return nil
+
+        guard url.contains("youtube.com") || url.contains("music.youtube.com") else {
+            return nil
+        }
+
+        guard let urlComponents = URLComponents(string: url),
+              let queryItems = urlComponents.queryItems,
+              let vParam = queryItems.first(where: { $0.name == "v" }),
+              let videoId = vParam.value,
+              !videoId.isEmpty else {
+            return nil
+        }
+
+        return videoId
     }
-    
+
     private func fetchPlaylistSongs(playlistId: String) async throws -> [Song] {
-        // This is a placeholder implementation
-        // In a real app, you would:
-        // 1. Use YouTube Data API v3 to fetch playlist items
-        // 2. For each video, get its details (title, duration, thumbnail)
-        // 3. Convert to Song objects
-        
-        // For demonstration, return sample data
-        return createSampleSongs(count: 5, prefix: "Playlist Song")
+        let videoIds = try await fetchPlaylistVideoIds(playlistId: playlistId)
+
+        guard !videoIds.isEmpty else {
+            return []
+        }
+
+        return try await fetchSongsFromVideoIds(videoIds)
     }
-    
+
     private func fetchSingleVideo(videoId: String) async throws -> [Song] {
-        // This is a placeholder implementation
-        // In a real app, you would:
-        // 1. Use YouTube Data API v3 to fetch video details
-        // 2. Extract title, duration, thumbnail
-        // 3. Convert to Song object
-        
-        // For demonstration, return sample data
-        return createSampleSongs(count: 1, prefix: "Video", videoId: videoId)
+        return try await fetchSongsFromVideoIds([videoId])
     }
-    
+
+    private func fetchPlaylistVideoIds(playlistId: String) async throws -> [String] {
+        var nextPageToken: String?
+        var videoIds: [String] = []
+
+        repeat {
+            var components = URLComponents(string: "\(Config.youtubeAPIBaseURL)/playlistItems")
+            var queryItems: [URLQueryItem] = [
+                URLQueryItem(name: "part", value: "contentDetails"),
+                URLQueryItem(name: "maxResults", value: String(Config.maxYouTubeResults)),
+                URLQueryItem(name: "playlistId", value: playlistId),
+                URLQueryItem(name: "key", value: Config.youtubeAPIKey)
+            ]
+
+            if let nextPageToken {
+                queryItems.append(URLQueryItem(name: "pageToken", value: nextPageToken))
+            }
+
+            components?.queryItems = queryItems
+
+            guard let url = components?.url else {
+                throw YouTubeMusicError.invalidURL
+            }
+
+            let response: PlaylistItemsResponse = try await performRequest(url: url)
+            videoIds.append(contentsOf: response.items.map(\.contentDetails.videoId))
+            nextPageToken = response.nextPageToken
+        } while nextPageToken != nil
+
+        return videoIds
+    }
+
+    private func fetchSongsFromVideoIds(_ videoIds: [String]) async throws -> [Song] {
+        var songs: [Song] = []
+
+        for (batchIndex, chunk) in videoIds.chunked(into: 50).enumerated() {
+            var components = URLComponents(string: "\(Config.youtubeAPIBaseURL)/videos")
+            components?.queryItems = [
+                URLQueryItem(name: "part", value: "snippet,contentDetails"),
+                URLQueryItem(name: "id", value: chunk.joined(separator: ",")),
+                URLQueryItem(name: "key", value: Config.youtubeAPIKey)
+            ]
+
+            guard let url = components?.url else {
+                throw YouTubeMusicError.invalidURL
+            }
+
+            let response: VideosResponse = try await performRequest(url: url)
+
+            let mappedSongs = response.items.enumerated().map { itemIndex, item in
+                Song(
+                    title: item.snippet.title,
+                    artist: item.snippet.channelTitle,
+                    youtubeId: item.id,
+                    thumbnailURL: item.snippet.thumbnails.best?.url,
+                    duration: item.contentDetails.duration.timeInterval,
+                    startTime: 0,
+                    endTime: nil,
+                    order: (batchIndex * 50) + itemIndex
+                )
+            }
+
+            songs.append(contentsOf: mappedSongs)
+        }
+
+        return songs
+    }
+
+    private func performRequest<T: Decodable>(url: URL) async throws -> T {
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url)
+
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200..<300).contains(httpResponse.statusCode) else {
+                throw YouTubeMusicError.invalidResponse
+            }
+
+            do {
+                return try JSONDecoder().decode(T.self, from: data)
+            } catch {
+                throw YouTubeMusicError.parseError
+            }
+        } catch let error as YouTubeMusicError {
+            throw error
+        } catch {
+            throw YouTubeMusicError.networkError(error)
+        }
+    }
+
     private func createSampleSongs(count: Int, prefix: String, videoId: String? = nil) -> [Song] {
         var songs: [Song] = []
-        
+
         for i in 0..<count {
+            let sampleVideoId = videoId ?? "sample_\(UUID().uuidString.prefix(8))"
             let song = Song(
                 title: "\(prefix) \(i + 1)",
                 artist: "Sample Artist \(i + 1)",
-                youtubeId: videoId ?? "sample_\(UUID().uuidString.prefix(8))",
-                thumbnailURL: "https://img.youtube.com/vi/\(videoId ?? "sample")/default.jpg",
+                youtubeId: sampleVideoId,
+                thumbnailURL: "https://img.youtube.com/vi/\(sampleVideoId)/default.jpg",
                 duration: Double.random(in: 120...300),
                 startTime: 0,
                 order: i
             )
             songs.append(song)
         }
-        
+
         return songs
     }
-    
-    // MARK: - Real Implementation Notes
-    
-    /*
-     To implement real YouTube Music integration, you would need:
-     
-     1. YouTube Data API v3 Setup:
-        - Get API key from Google Cloud Console
-        - Enable YouTube Data API v3
-        - Store API key securely (e.g., in Keychain)
-     
-     2. API Endpoints:
-        - Playlists: GET https://www.googleapis.com/youtube/v3/playlistItems
-        - Videos: GET https://www.googleapis.com/youtube/v3/videos
-     
-     3. Example API Call:
-        let apiKey = "YOUR_API_KEY"
-        let url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=\(playlistId)&key=\(apiKey)"
-     
-     4. Parse Response:
-        - Extract video IDs, titles, thumbnails
-        - Fetch video durations separately (requires another API call)
-     
-     5. Audio Streaming:
-        - Use XCDYouTubeKit or similar library to extract audio stream URLs
-        - YouTube's terms of service restrict direct audio extraction
-        - Consider using official YouTube Music API if available
-     
-     6. Authentication:
-        - For accessing user's YouTube Music library, implement OAuth 2.0
-        - Use Google Sign-In SDK for iOS
-     
-     Note: This implementation uses sample data for demonstration.
-     Replace with actual API calls in production.
-     */
+}
+
+private struct PlaylistItemsResponse: Decodable {
+    let nextPageToken: String?
+    let items: [PlaylistItem]
+}
+
+private struct PlaylistItem: Decodable {
+    let contentDetails: PlaylistItemContentDetails
+}
+
+private struct PlaylistItemContentDetails: Decodable {
+    let videoId: String
+}
+
+private struct VideosResponse: Decodable {
+    let items: [VideoItem]
+}
+
+private struct VideoItem: Decodable {
+    let id: String
+    let snippet: VideoSnippet
+    let contentDetails: VideoContentDetails
+}
+
+private struct VideoSnippet: Decodable {
+    let title: String
+    let channelTitle: String
+    let thumbnails: VideoThumbnails
+}
+
+private struct VideoThumbnails: Decodable {
+    let `default`: VideoThumbnail?
+    let medium: VideoThumbnail?
+    let high: VideoThumbnail?
+    let standard: VideoThumbnail?
+    let maxres: VideoThumbnail?
+
+    var best: VideoThumbnail? {
+        maxres ?? standard ?? high ?? medium ?? `default`
+    }
+}
+
+private struct VideoThumbnail: Decodable {
+    let url: String
+}
+
+private struct VideoContentDetails: Decodable {
+    let duration: String
+}
+
+private extension String {
+    var timeInterval: TimeInterval {
+        let pattern = #"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?"#
+        guard let regex = try? NSRegularExpression(pattern: pattern),
+              let match = regex.firstMatch(in: self, range: NSRange(startIndex..<endIndex, in: self)) else {
+            return 0
+        }
+
+        func component(at index: Int) -> Int {
+            let range = match.range(at: index)
+            guard range.location != NSNotFound,
+                  let swiftRange = Range(range, in: self) else {
+                return 0
+            }
+            return Int(self[swiftRange]) ?? 0
+        }
+
+        let hours = component(at: 1)
+        let minutes = component(at: 2)
+        let seconds = component(at: 3)
+
+        return TimeInterval(hours * 3600 + minutes * 60 + seconds)
+    }
+}
+
+private extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        guard size > 0 else { return [self] }
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0..<Swift.min($0 + size, count)])
+        }
+    }
 }
