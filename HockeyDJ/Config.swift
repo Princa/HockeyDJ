@@ -18,7 +18,7 @@ struct Config {
     /// 2. Enable YouTube Data API v3
     /// 3. Create credentials (API Key)
     /// 4. Replace "YOUR_API_KEY_HERE" with your actual key
-    static let youtubeAPIKey = "YOUR_API_KEY_HERE"
+    static let youtubeAPIKey = "AIzaSyC3NBMdNHMOF_Zf9e4EXkykpWE5c0YtOKQ"
     
     /// YouTube API Base URL
     static let youtubeAPIBaseURL = "https://www.googleapis.com/youtube/v3"

@@ -21,6 +21,7 @@
 		A1B1C1D1E1F100000000000C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F100000000001C /* Assets.xcassets */; };
 		A1B1C1D1E1F100000000000D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F100000000001D /* Preview Assets.xcassets */; };
 		A1B1C1D1E1F100000000000E /* HockeyDJ.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F100000000001E /* HockeyDJ.xcdatamodeld */; };
+		B1B1C1D1E1F1000000001001 /* YouTubeMusicServiceLiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1C1D1E1F1000000001002 /* YouTubeMusicServiceLiveTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,10 +40,29 @@
 		A1B1C1D1E1F100000000001C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1B1C1D1E1F100000000001D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A1B1C1D1E1F100000000001F /* HockeyDJ.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HockeyDJ.xcdatamodel; sourceTree = "<group>"; };
+		B1B1C1D1E1F1000000001000 /* HockeyDJTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HockeyDJTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B1C1D1E1F1000000001002 /* YouTubeMusicServiceLiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeMusicServiceLiveTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXContainerItemProxy section */
+		B1B1C1D1E1F1000000001010 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1B1C1D1E1F100000000002C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1B1C1D1E1F1000000000028;
+			remoteInfo = HockeyDJ;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A1B1C1D1E1F1000000000020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B1C1D1E1F1000000001007 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -57,6 +77,7 @@
 			children = (
 				A1B1C1D1E1F1000000000022 /* HockeyDJ */,
 				A1B1C1D1E1F1000000000023 /* Products */,
+				B1B1C1D1E1F1000000001003 /* HockeyDJTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				A1B1C1D1E1F1000000000010 /* HockeyDJ.app */,
+				B1B1C1D1E1F1000000001000 /* HockeyDJTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,6 +143,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		B1B1C1D1E1F1000000001003 /* HockeyDJTests */ = {
+			isa = PBXGroup;
+			children = (
+				B1B1C1D1E1F1000000001002 /* YouTubeMusicServiceLiveTests.swift */,
+			);
+			path = HockeyDJTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,6 +171,24 @@
 			productReference = A1B1C1D1E1F1000000000010 /* HockeyDJ.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B1B1C1D1E1F1000000001004 /* HockeyDJTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1B1C1D1E1F100000000100B /* Build configuration list for PBXNativeTarget "HockeyDJTests" */;
+			buildPhases = (
+				B1B1C1D1E1F1000000001005 /* Sources */,
+				B1B1C1D1E1F1000000001007 /* Frameworks */,
+				B1B1C1D1E1F1000000001006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1B1C1D1E1F100000000100F /* PBXTargetDependency */,
+			);
+			name = HockeyDJTests;
+			productName = HockeyDJTests;
+			productReference = B1B1C1D1E1F1000000001000 /* HockeyDJTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -153,6 +201,10 @@
 				TargetAttributes = {
 					A1B1C1D1E1F1000000000028 = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					B1B1C1D1E1F1000000001004 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = A1B1C1D1E1F1000000000028;
 					};
 				};
 			};
@@ -170,6 +222,7 @@
 			projectRoot = "";
 			targets = (
 				A1B1C1D1E1F1000000000028 /* HockeyDJ */,
+				B1B1C1D1E1F1000000001004 /* HockeyDJTests */,
 			);
 		};
 /* End PBXProject section */
@@ -181,6 +234,13 @@
 			files = (
 				A1B1C1D1E1F100000000000C /* Assets.xcassets in Resources */,
 				A1B1C1D1E1F100000000000D /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B1C1D1E1F1000000001006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +266,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B1B1C1D1E1F1000000001005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B1C1D1E1F1000000001001 /* YouTubeMusicServiceLiveTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1B1C1D1E1F100000000100F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1B1C1D1E1F1000000000028 /* HockeyDJ */;
+			targetProxy = B1B1C1D1E1F1000000001010 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A1B1C1D1E1F100000000002E /* Debug */ = {
@@ -384,6 +460,42 @@
 			};
 			name = Release;
 		};
+		B1B1C1D1E1F1000000001008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hockeydj.HockeyDJTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HockeyDJ.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HockeyDJ";
+			};
+			name = Debug;
+		};
+		B1B1C1D1E1F1000000001009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hockeydj.HockeyDJTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HockeyDJ.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HockeyDJ";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -401,6 +513,15 @@
 			buildConfigurations = (
 				A1B1C1D1E1F100000000002E /* Debug */,
 				A1B1C1D1E1F100000000002F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1B1C1D1E1F100000000100B /* Build configuration list for PBXNativeTarget "HockeyDJTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B1C1D1E1F1000000001008 /* Debug */,
+				B1B1C1D1E1F1000000001009 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
