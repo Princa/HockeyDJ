@@ -7,42 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1000001 /* HockeyDJApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000 /* HockeyDJApp.swift */; };
-		A1000003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002 /* ContentView.swift */; };
-		A1000005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000004 /* Assets.xcassets */; };
-		A1000008 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000007 /* Preview Assets.xcassets */; };
-		A100000A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000009 /* Persistence.swift */; };
-		A100000D /* HockeyDJ.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A100000B /* HockeyDJ.xcdatamodeld */; };
-		A100000F /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000E /* Song.swift */; };
-		A1000011 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000010 /* Playlist.swift */; };
-		A1000013 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000012 /* PlaylistView.swift */; };
-		A1000015 /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000014 /* SongDetailView.swift */; };
-		A1000017 /* YouTubeMusicImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000016 /* YouTubeMusicImportView.swift */; };
-		A1000019 /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000018 /* AudioPlayerManager.swift */; };
-		A100001B /* YouTubeMusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001A /* YouTubeMusicService.swift */; };
-		A100001D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001C /* Config.swift */; };
+		A1B1C1D1E1F1000000000001 /* HockeyDJApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1000000000011 /* HockeyDJApp.swift */; };
+		A1B1C1D1E1F1000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1000000000012 /* ContentView.swift */; };
+		A1B1C1D1E1F1000000000003 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1000000000013 /* Config.swift */; };
+		A1B1C1D1E1F1000000000004 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1000000000014 /* Persistence.swift */; };
+		A1B1C1D1E1F1000000000005 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1000000000015 /* Song.swift */; };
+		A1B1C1D1E1F1000000000006 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1000000000016 /* Playlist.swift */; };
+		A1B1C1D1E1F1000000000007 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1000000000017 /* PlaylistView.swift */; };
+		A1B1C1D1E1F1000000000008 /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1000000000018 /* SongDetailView.swift */; };
+		A1B1C1D1E1F1000000000009 /* YouTubeMusicImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F1000000000019 /* YouTubeMusicImportView.swift */; };
+		A1B1C1D1E1F100000000000A /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F100000000001A /* AudioPlayerManager.swift */; };
+		A1B1C1D1E1F100000000000B /* YouTubeMusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F100000000001B /* YouTubeMusicService.swift */; };
+		A1B1C1D1E1F100000000000C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F100000000001C /* Assets.xcassets */; };
+		A1B1C1D1E1F100000000000D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F100000000001D /* Preview Assets.xcassets */; };
+		A1B1C1D1E1F100000000000E /* HockeyDJ.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1B1C1D1E1F100000000001E /* HockeyDJ.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A0FFFFFF /* HockeyDJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HockeyDJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1000000 /* HockeyDJApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HockeyDJApp.swift; sourceTree = "<group>"; };
-		A1000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A1000004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A1000007 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A1000009 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		A100000C /* HockeyDJ.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HockeyDJ.xcdatamodel; sourceTree = "<group>"; };
-		A100000E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
-		A1000010 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
-		A1000012 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
-		A1000014 /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
-		A1000016 /* YouTubeMusicImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeMusicImportView.swift; sourceTree = "<group>"; };
-		A1000018 /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
-		A100001A /* YouTubeMusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeMusicService.swift; sourceTree = "<group>"; };
-		A100001C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1000000000010 /* HockeyDJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HockeyDJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B1C1D1E1F1000000000011 /* HockeyDJApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HockeyDJApp.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1000000000012 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1000000000013 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1000000000014 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1000000000015 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1000000000016 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1000000000017 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1000000000018 /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F1000000000019 /* YouTubeMusicImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeMusicImportView.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F100000000001A /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F100000000001B /* YouTubeMusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeMusicService.swift; sourceTree = "<group>"; };
+		A1B1C1D1E1F100000000001C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1B1C1D1E1F100000000001D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A1B1C1D1E1F100000000001F /* HockeyDJ.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HockeyDJ.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A0FFFFFE /* Frameworks */ = {
+		A1B1C1D1E1F1000000000020 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -52,85 +52,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A0FFFFFD /* Products */ = {
+		A1B1C1D1E1F1000000000021 = {
 			isa = PBXGroup;
 			children = (
-				A0FFFFFF /* HockeyDJ.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A0FFFFFC =  {
-			isa = PBXGroup;
-			children = (
-				A0FFFFFD /* Products */,
-				A1000001 /* HockeyDJ */,
+				A1B1C1D1E1F1000000000022 /* HockeyDJ */,
+				A1B1C1D1E1F1000000000023 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A1000001 /* HockeyDJ */ = {
+		A1B1C1D1E1F1000000000022 /* HockeyDJ */ = {
 			isa = PBXGroup;
 			children = (
-				A1000000 /* HockeyDJApp.swift */,
-				A1000002 /* ContentView.swift */,
-				A100001C /* Config.swift */,
-				A100001C /* Models */,
-				A100001D /* Views */,
-				A100001E /* Services */,
-				A1000009 /* Persistence.swift */,
-				A100000B /* HockeyDJ.xcdatamodeld */,
-				A1000004 /* Assets.xcassets */,
-				A1000006 /* Preview Content */,
+				A1B1C1D1E1F1000000000011 /* HockeyDJApp.swift */,
+				A1B1C1D1E1F1000000000012 /* ContentView.swift */,
+				A1B1C1D1E1F1000000000013 /* Config.swift */,
+				A1B1C1D1E1F1000000000024 /* Models */,
+				A1B1C1D1E1F1000000000025 /* Views */,
+				A1B1C1D1E1F1000000000026 /* Services */,
+				A1B1C1D1E1F1000000000014 /* Persistence.swift */,
+				A1B1C1D1E1F100000000001E /* HockeyDJ.xcdatamodeld */,
+				A1B1C1D1E1F100000000001C /* Assets.xcassets */,
+				A1B1C1D1E1F1000000000027 /* Preview Content */,
 			);
 			path = HockeyDJ;
 			sourceTree = "<group>";
 		};
-		A1000006 /* Preview Content */ = {
+		A1B1C1D1E1F1000000000023 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1000007 /* Preview Assets.xcassets */,
+				A1B1C1D1E1F1000000000010 /* HockeyDJ.app */,
 			);
-			path = "Preview Content";
+			name = Products;
 			sourceTree = "<group>";
 		};
-		A100001C /* Models */ = {
+		A1B1C1D1E1F1000000000024 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A100000E /* Song.swift */,
-				A1000010 /* Playlist.swift */,
+				A1B1C1D1E1F1000000000015 /* Song.swift */,
+				A1B1C1D1E1F1000000000016 /* Playlist.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A100001D /* Views */ = {
+		A1B1C1D1E1F1000000000025 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A1000012 /* PlaylistView.swift */,
-				A1000014 /* SongDetailView.swift */,
-				A1000016 /* YouTubeMusicImportView.swift */,
+				A1B1C1D1E1F1000000000017 /* PlaylistView.swift */,
+				A1B1C1D1E1F1000000000018 /* SongDetailView.swift */,
+				A1B1C1D1E1F1000000000019 /* YouTubeMusicImportView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A100001E /* Services */ = {
+		A1B1C1D1E1F1000000000026 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A1000018 /* AudioPlayerManager.swift */,
-				A100001A /* YouTubeMusicService.swift */,
+				A1B1C1D1E1F100000000001A /* AudioPlayerManager.swift */,
+				A1B1C1D1E1F100000000001B /* YouTubeMusicService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		A1B1C1D1E1F1000000000027 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A1B1C1D1E1F100000000001D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A0FFFFFE /* HockeyDJ */ = {
+		A1B1C1D1E1F1000000000028 /* HockeyDJ */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A100001F /* Build configuration list for PBXNativeTarget "HockeyDJ" */;
+			buildConfigurationList = A1B1C1D1E1F1000000000029 /* Build configuration list for PBXNativeTarget "HockeyDJ" */;
 			buildPhases = (
-				A0FFFFFB /* Sources */,
-				A0FFFFFE /* Frameworks */,
-				A0FFFFFD /* Resources */,
+				A1B1C1D1E1F100000000002A /* Sources */,
+				A1B1C1D1E1F1000000000020 /* Frameworks */,
+				A1B1C1D1E1F100000000002B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -138,25 +138,25 @@
 			);
 			name = HockeyDJ;
 			productName = HockeyDJ;
-			productReference = A0FFFFFF /* HockeyDJ.app */;
+			productReference = A1B1C1D1E1F1000000000010 /* HockeyDJ.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A0FFFFFA /* Project object */ = {
+		A1B1C1D1E1F100000000002C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					A0FFFFFE = {
+					A1B1C1D1E1F1000000000028 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = A0FFFFFC /* Build configuration list for PBXProject "HockeyDJ" */;
+			buildConfigurationList = A1B1C1D1E1F100000000002D /* Build configuration list for PBXProject "HockeyDJ" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -164,52 +164,52 @@
 				en,
 				Base,
 			);
-			mainGroup = A0FFFFFC;
-			productRefGroup = A0FFFFFD /* Products */;
+			mainGroup = A1B1C1D1E1F1000000000021;
+			productRefGroup = A1B1C1D1E1F1000000000023 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A0FFFFFE /* HockeyDJ */,
+				A1B1C1D1E1F1000000000028 /* HockeyDJ */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A0FFFFFD /* Resources */ = {
+		A1B1C1D1E1F100000000002B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1000008 /* Preview Assets.xcassets in Resources */,
-				A1000005 /* Assets.xcassets in Resources */,
+				A1B1C1D1E1F100000000000C /* Assets.xcassets in Resources */,
+				A1B1C1D1E1F100000000000D /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A0FFFFFB /* Sources */ = {
+		A1B1C1D1E1F100000000002A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A100000D /* HockeyDJ.xcdatamodeld in Sources */,
-				A1000003 /* ContentView.swift in Sources */,
-				A100000A /* Persistence.swift in Sources */,
-				A1000001 /* HockeyDJApp.swift in Sources */,
-				A100000F /* Song.swift in Sources */,
-				A1000011 /* Playlist.swift in Sources */,
-				A1000013 /* PlaylistView.swift in Sources */,
-				A1000015 /* SongDetailView.swift in Sources */,
-				A1000017 /* YouTubeMusicImportView.swift in Sources */,
-				A1000019 /* AudioPlayerManager.swift in Sources */,
-				A100001B /* YouTubeMusicService.swift in Sources */,
-				A100001D /* Config.swift in Sources */,
+				A1B1C1D1E1F1000000000001 /* HockeyDJApp.swift in Sources */,
+				A1B1C1D1E1F1000000000002 /* ContentView.swift in Sources */,
+				A1B1C1D1E1F1000000000003 /* Config.swift in Sources */,
+				A1B1C1D1E1F1000000000004 /* Persistence.swift in Sources */,
+				A1B1C1D1E1F1000000000005 /* Song.swift in Sources */,
+				A1B1C1D1E1F1000000000006 /* Playlist.swift in Sources */,
+				A1B1C1D1E1F1000000000007 /* PlaylistView.swift in Sources */,
+				A1B1C1D1E1F1000000000008 /* SongDetailView.swift in Sources */,
+				A1B1C1D1E1F1000000000009 /* YouTubeMusicImportView.swift in Sources */,
+				A1B1C1D1E1F100000000000A /* AudioPlayerManager.swift in Sources */,
+				A1B1C1D1E1F100000000000B /* YouTubeMusicService.swift in Sources */,
+				A1B1C1D1E1F100000000000E /* HockeyDJ.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A100001D /* Debug */ = {
+		A1B1C1D1E1F100000000002E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -272,7 +272,7 @@
 			};
 			name = Debug;
 		};
-		A100001E /* Release */ = {
+		A1B1C1D1E1F100000000002F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -328,7 +328,7 @@
 			};
 			name = Release;
 		};
-		A1000020 /* Debug */ = {
+		A1B1C1D1E1F1000000000030 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -356,7 +356,7 @@
 			};
 			name = Debug;
 		};
-		A1000021 /* Release */ = {
+		A1B1C1D1E1F1000000000031 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -387,20 +387,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A0FFFFFC /* Build configuration list for PBXProject "HockeyDJ" */ = {
+		A1B1C1D1E1F1000000000029 /* Build configuration list for PBXNativeTarget "HockeyDJ" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A100001D /* Debug */,
-				A100001E /* Release */,
+				A1B1C1D1E1F1000000000030 /* Debug */,
+				A1B1C1D1E1F1000000000031 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A100001F /* Build configuration list for PBXNativeTarget "HockeyDJ" */ = {
+		A1B1C1D1E1F100000000002D /* Build configuration list for PBXProject "HockeyDJ" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1000020 /* Debug */,
-				A1000021 /* Release */,
+				A1B1C1D1E1F100000000002E /* Debug */,
+				A1B1C1D1E1F100000000002F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -408,17 +408,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A100000B /* HockeyDJ.xcdatamodeld */ = {
+		A1B1C1D1E1F100000000001E /* HockeyDJ.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				A100000C /* HockeyDJ.xcdatamodel */,
+				A1B1C1D1E1F100000000001F /* HockeyDJ.xcdatamodel */,
 			);
-			currentVersion = A100000C /* HockeyDJ.xcdatamodel */;
+			currentVersion = A1B1C1D1E1F100000000001F /* HockeyDJ.xcdatamodel */;
 			path = HockeyDJ.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = A0FFFFFA /* Project object */;
+	rootObject = A1B1C1D1E1F100000000002C /* Project object */;
 }
