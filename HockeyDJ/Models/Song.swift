@@ -12,6 +12,7 @@ struct Song: Identifiable, Codable {
     var title: String
     var artist: String
     var youtubeId: String
+    var audioFileURL: String?
     var thumbnailURL: String?
     var duration: TimeInterval
     var startTime: TimeInterval
@@ -22,6 +23,7 @@ struct Song: Identifiable, Codable {
          title: String,
          artist: String,
          youtubeId: String,
+         audioFileURL: String? = nil,
          thumbnailURL: String? = nil,
          duration: TimeInterval,
          startTime: TimeInterval = 0,
@@ -31,6 +33,7 @@ struct Song: Identifiable, Codable {
         self.title = title
         self.artist = artist
         self.youtubeId = youtubeId
+        self.audioFileURL = audioFileURL
         self.thumbnailURL = thumbnailURL
         self.duration = duration
         self.startTime = startTime
@@ -44,6 +47,7 @@ struct Song: Identifiable, Codable {
         self.title = entity.title ?? ""
         self.artist = entity.artist ?? ""
         self.youtubeId = entity.youtubeId ?? ""
+        self.audioFileURL = entity.audioFileURL
         self.thumbnailURL = entity.thumbnailURL
         self.duration = entity.duration
         self.startTime = entity.startTime
@@ -57,6 +61,7 @@ struct Song: Identifiable, Codable {
         entity.title = self.title
         entity.artist = self.artist
         entity.youtubeId = self.youtubeId
+        entity.audioFileURL = self.audioFileURL
         entity.thumbnailURL = self.thumbnailURL
         entity.duration = self.duration
         entity.startTime = self.startTime
