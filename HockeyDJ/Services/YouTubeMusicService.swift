@@ -33,6 +33,29 @@ enum YouTubeMusicError: LocalizedError {
 class YouTubeMusicService: ObservableObject {
     @Published var isLoading: Bool = false
 
+    func importSongs(urls: [String]) async throws -> [Song] {
+        let cleanedURLs = urls
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+
+        guard !cleanedURLs.isEmpty else {
+            return []
+        }
+
+        var aggregatedSongs: [Song] = []
+
+        for url in cleanedURLs {
+            let songs = try await importPlaylist(url: url)
+            aggregatedSongs.append(contentsOf: songs)
+        }
+
+        return aggregatedSongs.enumerated().map { index, song in
+            var reorderedSong = song
+            reorderedSong.order = index
+            return reorderedSong
+        }
+    }
+
     func importPlaylist(url: String) async throws -> [Song] {
         guard URL(string: url) != nil else {
             throw YouTubeMusicError.invalidURL

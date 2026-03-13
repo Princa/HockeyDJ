@@ -26,6 +26,7 @@ struct ContentView: View {
                 }
                 .sheet(isPresented: $showingImportView) {
                     YouTubeMusicImportView()
+                        .environmentObject(audioPlayerManager)
                 }
         }
         .environmentObject(audioPlayerManager)

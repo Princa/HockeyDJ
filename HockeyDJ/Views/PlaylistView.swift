@@ -101,14 +101,33 @@ struct SongRowView: View {
     @EnvironmentObject var audioPlayerManager: AudioPlayerManager
     
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
+            AsyncImage(url: URL(string: song.thumbnailURL ?? "")) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+            } placeholder: {
+                Rectangle()
+                    .fill(Color(.systemGray5))
+                    .overlay(
+                        Image(systemName: "music.note")
+                            .foregroundColor(.secondary)
+                    )
+            }
+            .frame(width: 60, height: 60)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+
             VStack(alignment: .leading, spacing: 4) {
                 Text(song.title ?? "Unknown Title")
                     .font(.headline)
                 Text(song.artist ?? "Unknown Artist")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                
+
+                Text("Duration: \(formatTime(song.duration))")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
                 HStack {
                     Text("Start: \(formatTime(song.startTime))")
                         .font(.caption)
@@ -120,9 +139,9 @@ struct SongRowView: View {
                     }
                 }
             }
-            
+
             Spacer()
-            
+
             Button(action: {
                 audioPlayerManager.playSong(Song(from: song))
             }) {
